@@ -5,5 +5,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [com.netflix.curator/curator-test "1.3.3"]
-                 [avout "0.5.4"]
-                 [environ "0.4.0"]])
+                 [environ "0.4.0"]
+                 [zookeeper-clj "0.9.3"]]
+  :eval-in-leiningen true)
