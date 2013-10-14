@@ -8,11 +8,11 @@
 (def ^:dynamic *zk-connect-string* nil)
 (def ^:dynamic *zk-client* nil)
 
-(defn- config
+(defn config
   ([k args]
      (config k args nil))
   ([k args default]
-     (or (args k)
+     (or (get args k)
          (env (str "zookem-" (name k)))
          default)))
 
