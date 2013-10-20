@@ -4,7 +4,7 @@ A helper for running embedded Zookeeper instances for integration testing. Based
 
 ## Usage
 
-As a test helper (example using [Midje](https://github.com/marick/Midje)):
+As a test helper (example using [Midje](https://github.com/marick/Midje)), just add [zooken "0.1.0"] to your project's dev dependencies then:
 
 ```clj
 (ns (:require [zookem.core :refer [with-zk
@@ -25,12 +25,34 @@ As a lein plugin:
 
 ```clj
 (defproject myproject "0.1.0"
-  :plugins [[lein-zookem "0.1.0"]])
+  :plugins [[zookem "0.1.0"]]
+  :zookem {:port 2181
+           :nodes {"/some/path/with/data" "data"
+                   "/some/path/without/data" nil}})
 ```
 
     $ lein zookem midje
 
 The _zookem_ task starts an embedded instance of Zookeeper then runs the task given as an argument. Once the downstream task completes, the embedded instance of Zookeeper is terminated.
+
+This library supports [environ](https://github.com/weavejester/environ) configuration, so you can also set the Zookeeper port using the 'env' key in your project.clj:
+
+```clj
+(defproject myproject "0.1.0"
+  :env {:zookem-port "2181"})
+```
+
+or as an environment variable:
+
+```
+ZOOKEM_PORT=2181
+```
+
+or as a system property:
+
+```
+-Dzookem.port=2181
+```
 
 ## License
 

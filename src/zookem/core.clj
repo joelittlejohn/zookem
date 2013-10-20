@@ -13,14 +13,14 @@
      (config k args nil))
   ([k args default]
      (or (get args k)
-         (env (str "zookem-" (name k)))
+         (env (keyword (str "zookem-" (name k))))
          default)))
 
 (defmacro with-zk
   ([body]
      `(with-zk {} ~body))
   ([args & body]
-     `(let [port# (config :port ~args -1)
+     `(let [port# (Integer. (config :port ~args -1))
             nodes# (config :nodes ~args)
             zk-server# (TestingServer. port#)]
         (binding [*zk-port* (.getPort zk-server#)
