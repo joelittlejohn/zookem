@@ -13,7 +13,7 @@
      (config k args nil))
   ([k args default]
      (or (get args k)
-         (env (keyword (str "zookem-" (name k))))
+         (env (keyword (str "zookeeper-" (name k))))
          default)))
 
 (defmacro with-zk
