@@ -39,19 +39,19 @@ This library supports [environ](https://github.com/weavejester/environ) configur
 
 ```clj
 (defproject myproject "0.1.0"
-  :env {:zookem-port "2181"})
+  :env {:zookeeper-port "2181"})
 ```
 
 or as an environment variable:
 
 ```
-ZOOKEM_PORT=2181
+ZOOKEEPER_PORT=2181
 ```
 
 or as a system property:
 
 ```
--Dzookem.port=2181
+-Dzookeeper.port=2181
 ```
 
 ## License
