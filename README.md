@@ -26,9 +26,9 @@ As a lein plugin:
 ```clj
 (defproject myproject "0.1.0"
   :plugins [[zookem "0.1.0"]]
-  :zookem {:port 2181
-           :nodes {"/some/path/with/data" "data"
-                   "/some/path/without/data" nil}})
+  :zookeeper {:port 2181
+              :nodes {"/some/path/with/data" "data"
+                      "/some/path/without/data" nil}})
 ```
 
     $ lein zookem midje
