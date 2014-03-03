@@ -15,7 +15,7 @@ As a test helper (example using [Midje](https://github.com/marick/Midje)), just 
             :nodes {"/some/path/with/data" "data"
                     "/some/path/without/data" nil}}
     *zk-port* => 2181
-    *zk-connect-string* => "127.0.0.1:51828"
+    *zk-connect-string* => "127.0.0.1:2181"
     (fn-that-uses-zookeeper *zk-client*) => ...)
 ```
 
