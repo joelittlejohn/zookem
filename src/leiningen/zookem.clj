@@ -9,7 +9,7 @@
   Zookeeper"
   [project & args]
   (zk/with-zk (project :zookeeper)
-    (prn "lein-zookem:" zk/*zk-connect-string*)
+    (println "lein-zookem:" zk/*zk-connect-string*)
     (if (seq args)
       (main/apply-task (first args) project (rest args))
       (while true (Thread/sleep 5000)))))
