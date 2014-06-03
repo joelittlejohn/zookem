@@ -1,4 +1,4 @@
-# zookem
+# zookem [![Build Status](https://travis-ci.org/joelittlejohn/zookem.png)](https://travis-ci.org/joelittlejohn/zookem)
 
 A helper for running embedded Zookeeper instances for integration testing. Based on [the curator-test TestingServer](http://curator.incubator.apache.org/curator-test/).
 
