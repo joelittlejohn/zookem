@@ -4,7 +4,7 @@ A helper for running embedded Zookeeper instances for integration testing. Based
 
 ## Usage
 
-As a test helper (example using [Midje](https://github.com/marick/Midje)), just add `[zookem "0.1.0"]` to your project's dev dependencies then:
+As a test helper (example using [Midje](https://github.com/marick/Midje)), just add `[zookem "0.1.2"]` to your project's dev dependencies then:
 
 ```clj
 (ns (:require [zookem.core :refer [with-zk
@@ -25,7 +25,7 @@ As a lein plugin:
 
 ```clj
 (defproject myproject "0.1.0"
-  :plugins [[zookem "0.1.0"]]
+  :plugins [[zookem "0.1.2"]]
   :zookeeper {:port 2181
               :nodes {"/some/path/with/data" "data"
                       "/some/path/without/data" nil}})
