@@ -10,6 +10,9 @@
   [project & args]
   (zk/with-zk (project :zookeeper)
     (println "zookem: Starting ZooKeeper at" zk/*zk-connect-string*)
-    (if (seq args)
-      (main/apply-task (first args) project (rest args))
-      (while true (Thread/sleep 5000)))))
+    (try
+      (if (seq args)
+        (main/apply-task (first args) project (rest args))
+        (while true (Thread/sleep 5000)))
+      (finally
+        (println "zookem: Closing ZooKeeper")))))

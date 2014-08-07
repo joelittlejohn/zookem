@@ -34,6 +34,5 @@
                     (zk/set-data *zk-client* path# (to-bytes data#) -1))))
               ~@body
               (finally
-                (println "zookem: Closing ZooKeeper")
                 (zk/close *zk-client*)
                 (.close zk-server#))))))))
