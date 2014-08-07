@@ -1,4 +1,4 @@
-(defproject zookem "0.1.2"
+(defproject zookem "0.1.3-SNAPSHOT"
   :description "A helper for running embedded Zookeeper instances for integration testing."
   :url "https://github.com/joelittlejohn/zookem"
   :license {:name "Eclipse Public License"
