@@ -4,7 +4,9 @@ A helper for running embedded Zookeeper instances for integration testing. Based
 
 ## Usage
 
-As a test helper (example using [Midje](https://github.com/marick/Midje)), just add `[zookem "0.1.2"]` to your project's dev dependencies then:
+#### As a test helper 
+
+An example using [Midje](https://github.com/marick/Midje), just add `[zookem "0.1.2"]` to your project's dev dependencies then:
 
 ```clj
 (ns (:require [zookem.core :refer [with-zk
@@ -21,7 +23,7 @@ As a test helper (example using [Midje](https://github.com/marick/Midje)), just 
 
 The _with-zk_ macro starts up an embedded instance of Zookeeper for testing, runs the body, then shuts down the Zookeeper instance. Inside the body of the macro, the dynamic vars _\*zk-port\*_, _\*zk-connect-string\*_ and _\*zk-client\*_ will be bound.
 
-As a lein plugin:
+#### As a lein plugin
 
 ```clj
 (defproject myproject "0.1.0"
