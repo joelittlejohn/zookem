@@ -6,19 +6,19 @@ A helper for running embedded Zookeeper instances for integration testing. Based
 
 #### As a test helper 
 
-An example using [Midje](https://github.com/marick/Midje), just add `[zookem "0.1.2"]` to your project's dev dependencies then:
+An example in a `deftest`, just add `[zookem "0.1.2"]` to your project's dev dependencies then:
 
 ```clj
 (ns (:require [zookem.core :refer [with-zk
                                    *zk-port* *zk-connect-string* *zk-client*]))
 
-(fact "fn-that-uses-zookeeper can read data from zookeeper"
+(deftest fn-that-uses-zookeeper-can-read-data-from-zookeeper
   (with-zk {:port 2181 ;; optional, default is random
             :nodes {"/some/path/with/data" "data"
                     "/some/path/without/data" nil}}
-    *zk-port* => 2181
-    *zk-connect-string* => "127.0.0.1:2181"
-    (fn-that-uses-zookeeper *zk-client*) => ...)
+    (is (= 2181 *zk-port*))
+    (is (= "127.0.0.1:2181" *zk-connect-string*))
+    (is (= <somevalue> (fn-that-uses-zookeeper *zk-client*))))
 ```
 
 The _with-zk_ macro starts up an embedded instance of Zookeeper for testing, runs the body, then shuts down the Zookeeper instance. Inside the body of the macro, the dynamic vars _\*zk-port\*_, _\*zk-connect-string\*_ and _\*zk-client\*_ will be bound.
