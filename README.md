@@ -9,16 +9,15 @@ A helper for running embedded Zookeeper instances for integration testing. Based
 An example in a `deftest`, just add `[zookem "0.1.2"]` to your project's dev dependencies then:
 
 ```clj
-(ns (:require [zookem.core :refer [with-zk
-                                   *zk-port* *zk-connect-string* *zk-client*]))
+(ns (:require [zookem.core :as z))
 
 (deftest fn-that-uses-zookeeper-can-read-data-from-zookeeper
-  (with-zk {:port 2181 ;; optional, default is random
-            :nodes {"/some/path/with/data" "data"
-                    "/some/path/without/data" nil}}
-    (is (= 2181 *zk-port*))
-    (is (= "127.0.0.1:2181" *zk-connect-string*))
-    (is (= <somevalue> (fn-that-uses-zookeeper *zk-client*))))
+  (z/with-zk {:port 2181 ;; optional, default is random
+             :nodes {"/some/path/with/data" "data"
+                     "/some/path/without/data" nil}}
+    (is (= 2181 z/*zk-port*))
+    (is (= "127.0.0.1:2181" z/*zk-connect-string*))
+    (is (= <somevalue> (fn-that-uses-zookeeper z/*zk-client*))))
 ```
 
 The _with-zk_ macro starts up an embedded instance of Zookeeper for testing, runs the body, then shuts down the Zookeeper instance. Inside the body of the macro, the dynamic vars _\*zk-port\*_, _\*zk-connect-string\*_ and _\*zk-client\*_ will be bound.
@@ -33,7 +32,7 @@ The _with-zk_ macro starts up an embedded instance of Zookeeper for testing, run
                       "/some/path/without/data" nil}})
 ```
 
-    $ lein zookem midje
+    $ lein zookem test
 
 The _zookem_ task starts an embedded instance of Zookeeper then runs the task given as an argument. Once the downstream task completes, the embedded instance of Zookeeper is terminated.
 
