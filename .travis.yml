@@ -1,2 +1,2 @@
 language: clojure
-script: lein zookem check
+script: lein do check, zookem jar
