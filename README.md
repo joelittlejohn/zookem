@@ -13,8 +13,8 @@ An example in a `deftest`, just add `[zookem "0.1.2"]` to your project's dev dep
 
 (deftest fn-that-uses-zookeeper-can-read-data-from-zookeeper
   (z/with-zk {:port 2181 ;; optional, default is random
-             :nodes {"/some/path/with/data" "data"
-                     "/some/path/without/data" nil}}
+              :nodes {"/some/path/with/data" "data"
+                      "/some/path/without/data" nil}}
     (is (= 2181 z/*zk-port*))
     (is (= "127.0.0.1:2181" z/*zk-connect-string*))
     (is (= <somevalue> (fn-that-uses-zookeeper z/*zk-client*))))
